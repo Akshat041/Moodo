@@ -1,3 +1,4 @@
 import "./styles.css";
+import createSidebar from "./modules/sidebar";
 
-console.log("Hello dev!");
+createSidebar();
