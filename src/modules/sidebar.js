@@ -23,7 +23,7 @@ const projectTaskCount = document.createElement("p");
 projectTaskCount.classList.add("projectTaskCount");
 
 const deleteProjectBtn = document.createElement("button");
-deleteProjectBtn.classList.add("deleteProject");
+deleteProjectBtn.classList.add("deleteProjectBtn");
 
 // creates sidebar
 export default function createSidebar() {

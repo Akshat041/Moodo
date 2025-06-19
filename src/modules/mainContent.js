@@ -3,7 +3,7 @@ import { body } from "./sidebar";
 const mainContent = document.createElement("div");
 mainContent.classList.add("mainContent");
 
-const currentProjectName = document.createElement("h1");
+const currentProjectName = document.createElement("h2");
 currentProjectName.classList.add("currentProjectName");
 
 const taskContainer = document.createElement("div");
