@@ -3,6 +3,9 @@ import { body } from "./sidebar";
 const mainContent = document.createElement("div");
 mainContent.classList.add("mainContent");
 
+const mainContentContainer = document.createElement("div");
+mainContentContainer.classList.add("mainContentContainer");
+
 const currentProjectName = document.createElement("h2");
 currentProjectName.classList.add("currentProjectName");
 
@@ -17,6 +20,7 @@ export default function createMainContent() {
   taskContainer.textContent = "this is task container";
   addTaskBtn.textContent = "Add Task"; // use add icon later
 
-  mainContent.append(currentProjectName, taskContainer, addTaskBtn);
+  mainContentContainer.append(currentProjectName, taskContainer, addTaskBtn);
+  mainContent.append(mainContentContainer);
   body.append(mainContent);
 }
