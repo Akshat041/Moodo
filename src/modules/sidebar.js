@@ -1,4 +1,4 @@
-const body = document.querySelector("body");
+export const body = document.querySelector("body");
 
 const sidebar = document.createElement("div");
 sidebar.classList.add("sidebar");
