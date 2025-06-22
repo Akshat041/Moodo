@@ -9,5 +9,9 @@ export function createProject(title, description) {
     tasks.splice(tasks.indexOf(task), 1);
   }
 
-  return { title, description, tasks, addTask, removeTask };
+  function projectTaskCount() {
+    return tasks.length;
+  }
+
+  return { title, description, tasks, addTask, removeTask, projectTaskCount };
 }
