@@ -5,9 +5,7 @@
 // import addProject from "./addProject";
 // import { displayProjects } from "../index";
 
-const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
-
-export default function createProjectModal() {
+export function createProjectModal() {
   const projectTitleInputField = document.createElement("input");
   projectTitleInputField.classList.add("projectTitleInputField");
   projectTitleInputField.placeholder = "Project title";

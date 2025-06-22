@@ -1,6 +1,6 @@
-import { displayProjects, myProjects } from "../index";
+import { myProjects } from "../index";
 
-export default function addProject(project) {
+export function addProject(project) {
   myProjects.push(project);
-  displayProjects();
+  console.log(myProjects);
 }
