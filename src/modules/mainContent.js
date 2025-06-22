@@ -16,11 +16,13 @@ const addTaskBtn = document.createElement("button");
 addTaskBtn.classList.add("addTaskBtn");
 
 export default function createMainContent() {
-  currentProjectName.textContent = "Today"; // dynamic means should be able to change
-  taskContainer.textContent = "this is task container";
+  currentProjectName.textContent = "Today"; // dynamic
+  //   taskContainer.textContent = "this is task container";
   addTaskBtn.textContent = "Add Task"; // use add icon later
 
   mainContentContainer.append(currentProjectName, taskContainer, addTaskBtn);
   mainContent.append(mainContentContainer);
   body.append(mainContent);
 }
+
+export { addTaskBtn };
