@@ -13,6 +13,7 @@ import { createProjectModal } from "./modules/createProjectModal";
 import { addProject } from "./modules/addProject";
 import { getProjectInputs } from "./modules/getProjectInputs";
 import { createProject } from "./modules/createProject";
+import { displayProjects } from "./modules/displayProjects";
 
 export const myProjects = [];
 const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
@@ -26,8 +27,13 @@ createNewProjectBtn.addEventListener("click", () => {
     const project = new createProject(getProjectTitle, getProjectDescription);
 
     addProject(project);
+    displayProjects();
   });
 });
 
 const defaultProject = new createProject("Today", "What's the plan for today!");
 addProject(defaultProject);
+
+myProjects.forEach((project) => {
+  console.log(project.title);
+});
