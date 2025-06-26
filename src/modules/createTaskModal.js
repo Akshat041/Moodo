@@ -21,12 +21,15 @@ export function createTaskModal() {
 
   const priorityHigh = document.createElement("option");
   priorityHigh.classList.add("priorityHigh");
+  priorityHigh.textContent = "High";
 
   const priorityMedium = document.createElement("option");
   priorityMedium.classList.add("priorityMedium");
+  priorityHigh.textContent = "Medium";
 
   const priorityLow = document.createElement("option");
   priorityLow.classList.add("priorityLow");
+  priorityHigh.textContent = "Low";
 
   // add task btn
   const addTaskBtn = document.createElement("button");
