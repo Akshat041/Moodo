@@ -4,9 +4,11 @@ import { getProjectInputs } from "./modules/getProjectInputs";
 import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
 import { createTaskModal } from "./modules/createTaskModal";
+import { createTask } from "./modules/createTask";
 
 export const myProjects = [];
 const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
+const createTaskBtn = document.querySelector(".createTaskBtn");
 
 createNewProjectBtn.addEventListener("click", () => {
   createProjectModal();
@@ -21,11 +23,14 @@ createNewProjectBtn.addEventListener("click", () => {
   });
 });
 
+createTaskBtn.addEventListener("click", () => {
+  createTaskModal();
+});
+
 const defaultProject = new createProject("Today", "What's the plan for today!");
 addProject(defaultProject);
 
 displayProjects();
-createTaskModal();
 
 // date-fns
 // import { addDays, format } from "date-fns";

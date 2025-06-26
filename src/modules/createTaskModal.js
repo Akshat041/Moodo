@@ -36,19 +36,17 @@ export function createTaskModal() {
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add Task";
 
-  const createTask = document.querySelector(".createTask");
+  const createTaskBtn = document.querySelector(".createTaskBtn");
 
   const taskModal = document.querySelector(".taskModal");
 
-  createTask.addEventListener("click", () => {
-    priorityDropdown.append(priorityHigh, priorityMedium, priorityLow);
+  priorityDropdown.append(priorityHigh, priorityMedium, priorityLow);
 
-    taskModal.append(
-      taskTitleInputField,
-      taskDescriptionInputField,
-      dueDatePicker,
-      priorityDropdown,
-      addTaskBtn
-    );
-  });
+  taskModal.append(
+    taskTitleInputField,
+    taskDescriptionInputField,
+    dueDatePicker,
+    priorityDropdown,
+    addTaskBtn
+  );
 }
