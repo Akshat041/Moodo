@@ -1,19 +1,9 @@
-// function createTask(title, description, due_date, priority) {
-//   return { title, description, due_date, priority };
-// }
-
-// function displayProjects() {
-//   myProjects.forEach((project) => {
-//     console.log(project.title);
-//   });
-// }
-
-// should only contain event listeners and not the functionality functions
 import { createProjectModal } from "./modules/createProjectModal";
 import { addProject } from "./modules/addProject";
 import { getProjectInputs } from "./modules/getProjectInputs";
 import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
+import { createTaskModal } from "./modules/createTaskModal";
 
 export const myProjects = [];
 const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
@@ -34,6 +24,17 @@ createNewProjectBtn.addEventListener("click", () => {
 const defaultProject = new createProject("Today", "What's the plan for today!");
 addProject(defaultProject);
 
-myProjects.forEach((project) => {
-  console.log(project.title);
-});
+displayProjects();
+createTaskModal();
+
+// date-fns
+// import { addDays, format } from "date-fns";
+
+// const date = new Date();
+// const todayF = format(date, "dd/MM/yyyy");
+
+// const tomorrow = addDays(date, 1);
+// const tomorrowF = format(tomorrow, "dd/MM/yyyy");
+
+// console.log(todayF);
+// console.log(tomorrowF);
