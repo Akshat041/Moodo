@@ -1,5 +1,3 @@
-import { format } from "date-fns";
-
 export function createTaskModal() {
   // task title
   const taskTitleInputField = document.createElement("input");
@@ -18,6 +16,8 @@ export function createTaskModal() {
 
   // set priority
   const priorityDropdown = document.createElement("select");
+  priorityDropdown.id = "priorityDropdown";
+  priorityDropdown.name = "priorityDropdown";
 
   const priorityHigh = document.createElement("option");
   priorityHigh.classList.add("priorityHigh");
@@ -35,8 +35,6 @@ export function createTaskModal() {
   const addTaskBtn = document.createElement("button");
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add Task";
-
-  const createTaskBtn = document.querySelector(".createTaskBtn");
 
   const taskModal = document.querySelector(".taskModal");
 
