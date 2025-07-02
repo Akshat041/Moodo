@@ -1,12 +1,16 @@
-export function renderActiveProject(project) {
-  const createTaskBtn = document.querySelector(".createTaskBtn");
+import { createTaskModal } from "./createTaskModal";
+import { getTaskInputs } from "./getTaskInputs";
+import { createTask } from "./createTask";
+import { displayProjects } from "./displayProjects";
+import { clearTaskInputs } from "./clearTaskInputs";
+import { activeProject } from "..";
 
+export function renderActiveProject(project) {
   const mainContentContainer = document.querySelector(".mainContentContainer");
 
-  //   mainContentContainer.textContent = "";
-
-  const mainContent = document.createElement("div");
-  mainContent.classList.add("mainContent");
+  if (mainContentContainer) {
+    mainContentContainer.textContent = "";
+  }
 
   const activeProjectTitle = document.createElement("h1");
   activeProjectTitle.classList.add("activeProjectTitle");
@@ -20,15 +24,40 @@ export function renderActiveProject(project) {
   const activeProjectTaskModal = document.createElement("div");
   activeProjectTaskModal.classList.add("activeProjectTaskModal");
 
+  const createTaskBtn = document.createElement("button");
+  createTaskBtn.classList.add("createTaskBtn");
+
   activeProjectTitle.textContent = `${project.title}`;
   activeProjectDescription.textContent = `${project.description}`;
+  createTaskBtn.textContent = "Add New Task";
 
-  mainContent.append(
+  mainContentContainer.append(
     activeProjectTitle,
     activeProjectDescription,
     activeProjectTaskContainer,
-    activeProjectTaskModal
+    activeProjectTaskModal,
+    createTaskBtn
   );
 
-  mainContentContainer.insertBefore(mainContent, createTaskBtn);
+  // task event listener
+  createTaskBtn.addEventListener("click", () => {
+    createTaskModal();
+
+    document.querySelector(".addTaskBtn").addEventListener("click", () => {
+      const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
+        getTaskInputs();
+
+      const task = new createTask(
+        getTaskTitle,
+        getTaskDescription,
+        getDueDate,
+        getPriority
+      );
+
+      activeProject.addTask(task);
+
+      displayProjects();
+      clearTaskInputs();
+    });
+  });
 }

@@ -3,17 +3,21 @@ import { addProject } from "./modules/addProject";
 import { getProjectInputs } from "./modules/getProjectInputs";
 import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
-import { createTaskModal } from "./modules/createTaskModal";
-import { createTask } from "./modules/createTask";
-import { getTaskInputs } from "./modules/getTaskInputs";
-import { clearTaskInputs } from "./modules/clearTaskInputs";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
 import { renderActiveProject } from "./modules/renderActiveProject";
 
 export const myProjects = [];
 
+const defaultProject = new createProject("Today", "What's the plan for today!");
+addProject(defaultProject);
+
+export let activeProject = defaultProject;
+displayProjects();
+renderActiveProject(activeProject);
+
 const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
 const createTaskBtn = document.querySelector(".createTaskBtn");
+console.log(createTaskBtn);
 
 createNewProjectBtn.addEventListener("click", () => {
   createProjectModal();
@@ -23,41 +27,11 @@ createNewProjectBtn.addEventListener("click", () => {
 
     const project = new createProject(getProjectTitle, getProjectDescription);
 
-    currentProject = project;
+    activeProject = project;
 
-    addProject(currentProject);
+    addProject(activeProject);
     displayProjects();
     clearProjectInputs();
-    // console.log(myProjects);
+    renderActiveProject(activeProject);
   });
 });
-
-// task
-createTaskBtn.addEventListener("click", () => {
-  createTaskModal();
-
-  document.querySelector(".addTaskBtn").addEventListener("click", () => {
-    const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
-      getTaskInputs();
-
-    const task = new createTask(
-      getTaskTitle,
-      getTaskDescription,
-      getDueDate,
-      getPriority
-    );
-
-    currentProject.addTask(task);
-
-    displayProjects();
-    clearTaskInputs();
-  });
-});
-
-const defaultProject = new createProject("Today", "What's the plan for today!");
-addProject(defaultProject);
-
-let currentProject = defaultProject;
-let activeProject = defaultProject;
-displayProjects();
-renderActiveProject(activeProject);
