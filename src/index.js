@@ -7,6 +7,7 @@ import { createTaskModal } from "./modules/createTaskModal";
 import { createTask } from "./modules/createTask";
 import { getTaskInputs } from "./modules/getTaskInputs";
 import { clearTaskInputs } from "./modules/clearTaskInputs";
+import { clearProjectInputs } from "./modules/clearProjectInputs";
 
 export const myProjects = [];
 
@@ -23,8 +24,10 @@ createNewProjectBtn.addEventListener("click", () => {
 
     currentProject = project;
 
-    addProject(project);
+    addProject(currentProject);
     displayProjects();
+    clearProjectInputs();
+    // console.log(myProjects);
   });
 });
 
