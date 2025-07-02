@@ -36,7 +36,7 @@ export function createTaskModal() {
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add Task";
 
-  const taskModal = document.querySelector(".taskModal");
+  const taskModal = document.querySelector(".activeProjectTaskModal");
 
   priorityDropdown.append(priorityHigh, priorityMedium, priorityLow);
 

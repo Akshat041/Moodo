@@ -8,6 +8,7 @@ import { createTask } from "./modules/createTask";
 import { getTaskInputs } from "./modules/getTaskInputs";
 import { clearTaskInputs } from "./modules/clearTaskInputs";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
+import { renderActiveProject } from "./modules/renderActiveProject";
 
 export const myProjects = [];
 
@@ -57,4 +58,6 @@ const defaultProject = new createProject("Today", "What's the plan for today!");
 addProject(defaultProject);
 
 let currentProject = defaultProject;
+let activeProject = defaultProject;
 displayProjects();
+renderActiveProject(activeProject);
