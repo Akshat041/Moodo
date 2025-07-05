@@ -5,7 +5,6 @@ import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
 import { renderActiveProject } from "./modules/renderActiveProject";
-
 export const myProjects = [];
 
 const defaultProject = new createProject("Today", "What's the plan for today!");
@@ -16,8 +15,6 @@ displayProjects();
 renderActiveProject(activeProject);
 
 const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
-const createTaskBtn = document.querySelector(".createTaskBtn");
-console.log(createTaskBtn);
 
 createNewProjectBtn.addEventListener("click", () => {
   createProjectModal();

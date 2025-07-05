@@ -1,30 +1,39 @@
 import { myProjects } from "..";
+import { renderActiveProject } from "./renderActiveProject";
+// import { activeProject } from "..";
 
 export function displayProjects() {
   const myProjectsContainer = document.querySelector(".myProjectsContainer");
   myProjectsContainer.textContent = "";
 
-  myProjects.forEach((myProject) => {
+  myProjects.forEach((myProject, i) => {
     console.log(myProject);
 
     const myProjectContainer = document.createElement("div");
-    myProjectContainer.classList.add(".myProjectContainer");
+    myProjectContainer.classList.add("myProjectContainer");
 
-    const myProjectNavigationBtn = document.createElement("button");
-    myProjectNavigationBtn.classList.add(".myProjectNavigationBtn");
+    const myProjectBtn = document.createElement("button");
+    myProjectBtn.classList.add("myProjectBtn");
+    myProjectBtn.dataset.projectId = i;
+
+    // set event listener to each button
+    myProjectBtn.addEventListener("click", () => {
+      let activeProject = myProjects[i];
+      renderActiveProject(activeProject);
+    });
 
     const myProjectTaskCount = document.createElement("span");
-    myProjectTaskCount.classList.add(".myProjectTaskCount");
+    myProjectTaskCount.classList.add("myProjectTaskCount");
 
     const myProjectDeleteBtn = document.createElement("button");
-    myProjectDeleteBtn.classList.add(".myProjectDeleteBtn");
+    myProjectDeleteBtn.classList.add("myProjectDeleteBtn");
 
-    myProjectNavigationBtn.textContent = `${myProject.title}`;
+    myProjectBtn.textContent = `${myProject.title}`;
     myProjectTaskCount.textContent = `${myProject.tasks.length}`;
     myProjectDeleteBtn.textContent = "Delete";
 
     myProjectContainer.append(
-      myProjectNavigationBtn,
+      myProjectBtn,
       myProjectTaskCount,
       myProjectDeleteBtn
     );

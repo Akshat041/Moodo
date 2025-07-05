@@ -8,9 +8,7 @@ import { activeProject } from "..";
 export function renderActiveProject(project) {
   const mainContentContainer = document.querySelector(".mainContentContainer");
 
-  if (mainContentContainer) {
-    mainContentContainer.textContent = "";
-  }
+  mainContentContainer.textContent = "";
 
   const activeProjectTitle = document.createElement("h1");
   activeProjectTitle.classList.add("activeProjectTitle");
