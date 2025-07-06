@@ -16,8 +16,8 @@ export function renderActiveProject(project) {
   const activeProjectDescription = document.createElement("p");
   activeProjectDescription.classList.add("activeProjectDescription");
 
-  const activeProjectTaskContainer = document.createElement("div");
-  activeProjectTaskContainer.classList.add("activeProjectTaskContainer");
+  const activeProjectTasksContainer = document.createElement("div");
+  activeProjectTasksContainer.classList.add("activeProjectTasksContainer");
 
   const activeProjectTaskModal = document.createElement("div");
   activeProjectTaskModal.classList.add("activeProjectTaskModal");
@@ -32,10 +32,49 @@ export function renderActiveProject(project) {
   mainContentContainer.append(
     activeProjectTitle,
     activeProjectDescription,
-    activeProjectTaskContainer,
+    activeProjectTasksContainer,
     activeProjectTaskModal,
     createTaskBtn
   );
+
+  project.tasks.forEach((task) => {
+    const activeProjectTasksContainer = document.querySelector(
+      ".activeProjectTasksContainer"
+    );
+
+    const activeProjectTask = document.createElement("div");
+    activeProjectTask.classList.add("activeProjectTask");
+
+    const taskCheckbox = document.createElement("input");
+    taskCheckbox.classList.add("taskCheckbox");
+    taskCheckbox.type = "checkbox";
+
+    const taskTitle = document.createElement("span");
+    taskTitle.classList.add("taskTitle");
+
+    const taskDueDate = document.createElement("span");
+    taskDueDate.classList.add("taskDueDate");
+
+    const editTaskBtn = document.createElement("button");
+    editTaskBtn.classList.add("editTaskBtn");
+
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.classList.add("deleteTaskBtn");
+
+    taskTitle.textContent = `${task.title}`;
+    taskDueDate.textContent = `${task.dueDate}`;
+    editTaskBtn.textContent = "Edit";
+    deleteTaskBtn.textContent = "Delete";
+
+    activeProjectTask.append(
+      taskCheckbox,
+      taskTitle,
+      taskDueDate,
+      editTaskBtn,
+      deleteTaskBtn
+    );
+    activeProjectTasksContainer.append(activeProjectTask);
+  });
 
   // task event listener
   createTaskBtn.addEventListener("click", () => {
@@ -56,6 +95,7 @@ export function renderActiveProject(project) {
 
       displayProjects();
       clearTaskInputs();
+      renderActiveProject(activeProject);
     });
   });
 }

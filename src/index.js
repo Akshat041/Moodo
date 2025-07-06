@@ -5,6 +5,7 @@ import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
 import { renderActiveProject } from "./modules/renderActiveProject";
+
 export const myProjects = [];
 
 const defaultProject = new createProject("Today", "What's the plan for today!");
@@ -32,3 +33,5 @@ createNewProjectBtn.addEventListener("click", () => {
     renderActiveProject(activeProject);
   });
 });
+
+// displayTasks();
