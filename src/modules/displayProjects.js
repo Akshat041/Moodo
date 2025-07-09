@@ -1,6 +1,5 @@
-import { myProjects } from "..";
+import { myProjects, setActiveProject } from "..";
 import { renderActiveProject } from "./renderActiveProject";
-// import { activeProject } from "..";
 
 export function displayProjects() {
   const myProjectsContainer = document.querySelector(".myProjectsContainer");
@@ -18,8 +17,8 @@ export function displayProjects() {
 
     // set event listener to each button
     myProjectBtn.addEventListener("click", () => {
-      let activeProject = myProjects[i];
-      renderActiveProject(activeProject);
+      setActiveProject(myProjects[i]);
+      renderActiveProject(myProjects[i]);
     });
 
     const myProjectTaskCount = document.createElement("span");

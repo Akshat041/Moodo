@@ -15,23 +15,34 @@ export let activeProject = defaultProject;
 displayProjects();
 renderActiveProject(activeProject);
 
-const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
+export function getActiveProject() {
+  return activeProject;
+}
 
-createNewProjectBtn.addEventListener("click", () => {
-  createProjectModal();
+export function setActiveProject(p) {
+  activeProject = p;
+}
 
-  document.querySelector(".addProjectBtn").addEventListener("click", () => {
-    const { getProjectTitle, getProjectDescription } = getProjectInputs();
+function handleCreateNewProjBtnEvent() {
+  const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
 
-    const project = new createProject(getProjectTitle, getProjectDescription);
+  createNewProjectBtn.addEventListener("click", () => {
+    createProjectModal();
 
-    activeProject = project;
+    document.querySelector(".addProjectBtn").addEventListener("click", () => {
+      const { getProjectTitle, getProjectDescription } = getProjectInputs();
 
-    addProject(activeProject);
-    displayProjects();
-    clearProjectInputs();
-    renderActiveProject(activeProject);
+      const project = new createProject(getProjectTitle, getProjectDescription);
+
+      // sets project to active to only newly create object
+      activeProject = project;
+
+      addProject(activeProject);
+      displayProjects();
+      clearProjectInputs();
+      renderActiveProject(activeProject);
+    });
   });
-});
+}
 
-// displayTasks();
+handleCreateNewProjBtnEvent();

@@ -76,7 +76,6 @@ export function renderActiveProject(project) {
     activeProjectTasksContainer.append(activeProjectTask);
   });
 
-  // task event listener
   createTaskBtn.addEventListener("click", () => {
     createTaskModal();
 
@@ -92,6 +91,7 @@ export function renderActiveProject(project) {
       );
 
       activeProject.addTask(task);
+      console.log(activeProject.title);
 
       displayProjects();
       clearTaskInputs();
