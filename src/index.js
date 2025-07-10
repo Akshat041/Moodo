@@ -8,7 +8,10 @@ import { renderActiveProject } from "./modules/renderActiveProject";
 
 export const myProjects = [];
 
-const defaultProject = new createProject("Today", "What's the plan for today!");
+const defaultProject = new createProject(
+  "Inbox",
+  "All uncategorized tasks go here."
+);
 addProject(defaultProject);
 
 export let activeProject = defaultProject;
