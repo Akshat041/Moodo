@@ -79,6 +79,8 @@ export function renderActiveProject(project) {
   createTaskBtn.addEventListener("click", () => {
     createTaskModal();
 
+    document.querySelector(".createTaskBtn").style.display = "none";
+
     document.querySelector(".addTaskBtn").addEventListener("click", () => {
       const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
         getTaskInputs();
