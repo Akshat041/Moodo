@@ -1,4 +1,9 @@
-import { myProjects, setActiveProject } from "..";
+import {
+  deleteProject,
+  myProjects,
+  setActiveProject,
+  getActiveProject,
+} from "..";
 import { renderActiveProject } from "./renderActiveProject";
 
 export function displayProjects() {
@@ -10,7 +15,6 @@ export function displayProjects() {
 
     const myProjectContainer = document.createElement("div");
     myProjectContainer.classList.add("myProjectContainer");
-
     const myProjectBtn = document.createElement("button");
     myProjectBtn.classList.add("myProjectBtn");
     myProjectBtn.dataset.projectId = i;
@@ -36,6 +40,19 @@ export function displayProjects() {
       myProjectTaskCount,
       myProjectDeleteBtn
     );
+
+    // ERROR: deleting default project gives an error
+    myProjectDeleteBtn.addEventListener("click", () => {
+      if (myProject.title == "Today") {
+        alert(`The default project "Today" cannot be deleted.`);
+        return;
+      }
+
+      deleteProject(i);
+      displayProjects();
+      setActiveProject(myProjects[0]);
+      renderActiveProject(myProjects[0]);
+    });
 
     myProjectsContainer.append(myProjectContainer);
   });

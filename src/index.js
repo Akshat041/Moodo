@@ -45,4 +45,8 @@ function handleCreateNewProjBtnEvent() {
   });
 }
 
+export function deleteProject(index) {
+  myProjects.splice(index, 1);
+}
+
 handleCreateNewProjBtnEvent();
