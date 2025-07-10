@@ -96,6 +96,8 @@ export function renderActiveProject(project) {
       displayProjects();
       clearTaskInputs();
       renderActiveProject(activeProject);
+
+      document.querySelector(".activeProjectTaskModal").textContent = "";
     });
   });
 }

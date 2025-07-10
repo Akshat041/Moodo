@@ -41,10 +41,9 @@ export function displayProjects() {
       myProjectDeleteBtn
     );
 
-    // ERROR: deleting default project gives an error
     myProjectDeleteBtn.addEventListener("click", () => {
-      if (myProject.title == "Today") {
-        alert(`The default project "Today" cannot be deleted.`);
+      if (myProject.title == "Inbox") {
+        alert(`The default project "Inbox" cannot be deleted.`);
         return;
       }
 

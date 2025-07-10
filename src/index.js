@@ -32,7 +32,9 @@ function handleCreateNewProjBtnEvent() {
   createNewProjectBtn.addEventListener("click", () => {
     createProjectModal();
 
-    document.querySelector(".addProjectBtn").addEventListener("click", () => {
+    const addProjectBtn = document.querySelector(".addProjectBtn");
+
+    addProjectBtn.addEventListener("click", () => {
       const { getProjectTitle, getProjectDescription } = getProjectInputs();
 
       const project = new createProject(getProjectTitle, getProjectDescription);
@@ -44,6 +46,8 @@ function handleCreateNewProjBtnEvent() {
       displayProjects();
       clearProjectInputs();
       renderActiveProject(activeProject);
+
+      document.querySelector(".myProjectModal").textContent = "";
     });
   });
 }

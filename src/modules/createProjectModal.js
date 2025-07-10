@@ -11,11 +11,11 @@ export function createProjectModal() {
   addProjectBtn.classList.add("addProjectBtn");
   addProjectBtn.textContent = "Add Project";
 
-  document
-    .querySelector(".myProjectModal")
-    .append(
-      projectTitleInputField,
-      projectDescriptionInputField,
-      addProjectBtn
-    );
+  const myProjectModal = document.querySelector(".myProjectModal");
+
+  myProjectModal.append(
+    projectTitleInputField,
+    projectDescriptionInputField,
+    addProjectBtn
+  );
 }
