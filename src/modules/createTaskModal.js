@@ -3,6 +3,7 @@ export function createTaskModal() {
   const taskTitleInputField = document.createElement("input");
   taskTitleInputField.classList.add("taskTitleInputField");
   taskTitleInputField.placeholder = "Task title";
+  taskTitleInputField.required = true;
 
   // task description
   const taskDescriptionInputField = document.createElement("input");
@@ -13,6 +14,7 @@ export function createTaskModal() {
   const dueDatePicker = document.createElement("input");
   dueDatePicker.classList.add("dueDatePicker");
   dueDatePicker.type = "date";
+  dueDatePicker.required = true;
 
   // set priority
   const priorityDropdown = document.createElement("select");

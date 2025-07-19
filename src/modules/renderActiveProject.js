@@ -69,6 +69,12 @@ export function renderActiveProject(project) {
       deleteTaskBtn
     );
     activeProjectTasksContainer.append(activeProjectTask);
+
+    activeProjectTask.addEventListener("click", () => {
+      createTaskModal();
+
+      populateModal(task);
+    });
   });
 
   createTaskBtn.addEventListener("click", () => {
@@ -77,6 +83,19 @@ export function renderActiveProject(project) {
     document.querySelector(".createTaskBtn").style.display = "none";
 
     document.querySelector(".addTaskBtn").addEventListener("click", () => {
+      const taskTitleInput = document.querySelector(".taskTitleInputField");
+      const taskDueDateInput = document.querySelector(".dueDatePicker");
+
+      if (!taskTitleInput.checkValidity()) {
+        taskTitleInput.reportValidity();
+        return;
+      }
+
+      if (!taskDueDateInput.checkValidity()) {
+        taskDueDateInput.reportValidity();
+        return;
+      }
+
       const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
         getTaskInputs();
 
@@ -96,5 +115,40 @@ export function renderActiveProject(project) {
 
       document.querySelector(".activeProjectTaskModal").textContent = "";
     });
+  });
+}
+
+function populateModal(task) {
+  const modal = document.querySelector(".activeProjectTaskModal");
+
+  modal.querySelector(".taskTitleInputField").value = task.title;
+  modal.querySelector(".taskDescriptionInputField").value = task.description;
+  modal.querySelector(".dueDatePicker").value = task.dueDate;
+  modal.querySelector("#priorityDropdown").value = task.priority;
+
+  // hides add button and show update button instead
+  modal.querySelector(".addTaskBtn").style.display = "none";
+
+  let updateTaskBtn = document.querySelector(".updateTaskBtn");
+
+  if (!updateTaskBtn) {
+    updateTaskBtn = document.createElement("button");
+    updateTaskBtn.classList.add("updateTaskBtn");
+    updateTaskBtn.textContent = "Update";
+    modal.append(updateTaskBtn);
+  }
+
+  updateTaskBtn.addEventListener("click", () => {
+    const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
+      getTaskInputs();
+
+    task.title = getTaskTitle;
+    task.description = getTaskDescription;
+    task.dueDate = getDueDate;
+    task.priority = getPriority;
+
+    displayProjects();
+    renderActiveProject(activeProject);
+    modal.textContent = "";
   });
 }
