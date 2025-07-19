@@ -55,22 +55,17 @@ export function renderActiveProject(project) {
     const taskDueDate = document.createElement("span");
     taskDueDate.classList.add("taskDueDate");
 
-    const editTaskBtn = document.createElement("button");
-    editTaskBtn.classList.add("editTaskBtn");
-
     const deleteTaskBtn = document.createElement("button");
     deleteTaskBtn.classList.add("deleteTaskBtn");
 
     taskTitle.textContent = `${task.title}`;
     taskDueDate.textContent = `${task.dueDate}`;
-    editTaskBtn.textContent = "Edit";
     deleteTaskBtn.textContent = "Delete";
 
     activeProjectTask.append(
       taskCheckbox,
       taskTitle,
       taskDueDate,
-      editTaskBtn,
       deleteTaskBtn
     );
     activeProjectTasksContainer.append(activeProjectTask);
