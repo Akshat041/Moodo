@@ -4,6 +4,7 @@ import { createTask } from "./createTask";
 import { displayProjects } from "./displayProjects";
 import { clearTaskInputs } from "./clearTaskInputs";
 import { activeProject } from "..";
+import { deleteTask } from "..";
 
 export function renderActiveProject(project) {
   const mainContentContainer = document.querySelector(".mainContentContainer");
@@ -37,7 +38,7 @@ export function renderActiveProject(project) {
     createTaskBtn
   );
 
-  project.tasks.forEach((task) => {
+  project.tasks.forEach((task, index) => {
     const activeProjectTasksContainer = document.querySelector(
       ".activeProjectTasksContainer"
     );
@@ -70,10 +71,17 @@ export function renderActiveProject(project) {
     );
     activeProjectTasksContainer.append(activeProjectTask);
 
-    activeProjectTask.addEventListener("click", () => {
-      createTaskModal();
+    activeProjectTask.addEventListener("click", (event) => {
+      if (event.target.classList.contains("deleteTaskBtn")) return;
 
+      createTaskModal();
       populateModal(task);
+    });
+
+    deleteTaskBtn.addEventListener("click", () => {
+      deleteTask(index);
+      displayProjects();
+      renderActiveProject(activeProject);
     });
   });
 

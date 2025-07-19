@@ -56,4 +56,8 @@ export function deleteProject(index) {
   myProjects.splice(index, 1);
 }
 
+export function deleteTask(index) {
+  activeProject.tasks.splice(index, 1);
+}
+
 handleCreateNewProjBtnEvent();
