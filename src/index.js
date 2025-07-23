@@ -6,17 +6,36 @@ import { displayProjects } from "./modules/displayProjects";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
 import { renderActiveProject } from "./modules/renderActiveProject";
 
-export const myProjects = [];
+export function saveDataToLocalStorage() {
+  localStorage.setItem("myProjects", JSON.stringify(myProjects));
+}
 
-const defaultProject = new createProject(
-  "Inbox",
-  "All uncategorized tasks go here."
-);
-addProject(defaultProject);
+function getDataFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("myProjects"));
+}
 
-export let activeProject = defaultProject;
-displayProjects();
-renderActiveProject(activeProject);
+export const myProjects = getDataFromLocalStorage() || [];
+console.log("loaded from local storage: ", myProjects);
+
+export let activeProject;
+
+if (myProjects.length === 0) {
+  const defaultProject = new createProject(
+    "Inbox",
+    "All uncategorized tasks go here."
+  );
+  addProject(defaultProject);
+
+  activeProject = defaultProject;
+  displayProjects();
+  renderActiveProject(activeProject);
+
+  saveDataToLocalStorage();
+} else {
+  activeProject = myProjects[0];
+  displayProjects();
+  renderActiveProject(activeProject);
+}
 
 export function getActiveProject() {
   return activeProject;
@@ -39,7 +58,7 @@ function handleCreateNewProjBtnEvent() {
 
       const project = new createProject(getProjectTitle, getProjectDescription);
 
-      // sets project to active to only newly create object
+      // sets project to active to only newly create project
       activeProject = project;
 
       addProject(activeProject);
@@ -48,12 +67,16 @@ function handleCreateNewProjBtnEvent() {
       renderActiveProject(activeProject);
 
       document.querySelector(".myProjectModal").textContent = "";
+
+      saveDataToLocalStorage();
+      console.log(JSON.parse(localStorage.getItem("myProjects")));
     });
   });
 }
 
 export function deleteProject(index) {
   myProjects.splice(index, 1);
+  saveDataToLocalStorage();
 }
 
 export function deleteTask(index) {
