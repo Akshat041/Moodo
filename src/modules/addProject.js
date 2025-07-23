@@ -1,5 +1,5 @@
-import { myProjects } from "../index";
+import { restoredProjects } from "../index";
 
 export function addProject(project) {
-  myProjects.push(project);
+  restoredProjects.push(project);
 }

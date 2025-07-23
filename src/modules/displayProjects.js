@@ -1,6 +1,6 @@
 import {
   deleteProject,
-  myProjects,
+  restoredProjects,
   setActiveProject,
   getActiveProject,
 } from "..";
@@ -10,7 +10,7 @@ export function displayProjects() {
   const myProjectsContainer = document.querySelector(".myProjectsContainer");
   myProjectsContainer.textContent = "";
 
-  myProjects.forEach((myProject, i) => {
+  restoredProjects.forEach((myProject, i) => {
     console.log(myProject);
 
     const myProjectContainer = document.createElement("div");
@@ -21,8 +21,8 @@ export function displayProjects() {
 
     // set event listener to each button
     myProjectBtn.addEventListener("click", () => {
-      setActiveProject(myProjects[i]);
-      renderActiveProject(myProjects[i]);
+      setActiveProject(restoredProjects[i]);
+      renderActiveProject(restoredProjects[i]);
     });
 
     const myProjectTaskCount = document.createElement("span");
@@ -49,8 +49,8 @@ export function displayProjects() {
 
       deleteProject(i);
       displayProjects();
-      setActiveProject(myProjects[0]);
-      renderActiveProject(myProjects[0]);
+      setActiveProject(restoredProjects[0]);
+      renderActiveProject(restoredProjects[0]);
     });
 
     myProjectsContainer.append(myProjectContainer);

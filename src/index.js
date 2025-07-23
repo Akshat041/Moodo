@@ -14,12 +14,19 @@ function getDataFromLocalStorage() {
   return JSON.parse(localStorage.getItem("myProjects"));
 }
 
-export const myProjects = getDataFromLocalStorage() || [];
-console.log("loaded from local storage: ", myProjects);
+export const parsedProjects = getDataFromLocalStorage() || [];
+console.log("loaded from local storage: ", parsedProjects);
 
 export let activeProject;
 
-if (myProjects.length === 0) {
+// const parsedProjects = getDataFromLocalStorage();
+
+export const restoredProjects = parsedProjects.map((projectData) => {
+  const project = new createProject(projectData.title, projectData.description);
+  return project;
+});
+
+if (restoredProjects.length === 0) {
   const defaultProject = new createProject(
     "Inbox",
     "All uncategorized tasks go here."
@@ -32,7 +39,7 @@ if (myProjects.length === 0) {
 
   saveDataToLocalStorage();
 } else {
-  activeProject = myProjects[0];
+  activeProject = restoredProjects[0];
   displayProjects();
   renderActiveProject(activeProject);
 }
@@ -73,14 +80,13 @@ function handleCreateNewProjBtnEvent() {
     });
   });
 }
+handleCreateNewProjBtnEvent();
 
 export function deleteProject(index) {
-  myProjects.splice(index, 1);
+  restoredProjects.splice(index, 1);
   saveDataToLocalStorage();
 }
 
 export function deleteTask(index) {
   activeProject.tasks.splice(index, 1);
 }
-
-handleCreateNewProjBtnEvent();
