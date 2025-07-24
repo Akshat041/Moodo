@@ -5,9 +5,10 @@ import { createProject } from "./modules/createProject";
 import { displayProjects } from "./modules/displayProjects";
 import { clearProjectInputs } from "./modules/clearProjectInputs";
 import { renderActiveProject } from "./modules/renderActiveProject";
+import { createTask } from "./modules/createTask";
 
 export function saveDataToLocalStorage() {
-  localStorage.setItem("myProjects", JSON.stringify(myProjects));
+  localStorage.setItem("myProjects", JSON.stringify(restoredProjects));
 }
 
 function getDataFromLocalStorage() {
@@ -23,6 +24,16 @@ export let activeProject;
 
 export const restoredProjects = parsedProjects.map((projectData) => {
   const project = new createProject(projectData.title, projectData.description);
+
+  project.tasks = projectData.tasks.map((task) => {
+    return new createTask(
+      task.title,
+      task.description,
+      task.dueDate,
+      task.priority
+    );
+  });
+
   return project;
 });
 
@@ -89,4 +100,6 @@ export function deleteProject(index) {
 
 export function deleteTask(index) {
   activeProject.tasks.splice(index, 1);
+
+  saveDataToLocalStorage();
 }

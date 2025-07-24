@@ -3,7 +3,7 @@ import { getTaskInputs } from "./getTaskInputs";
 import { createTask } from "./createTask";
 import { displayProjects } from "./displayProjects";
 import { clearTaskInputs } from "./clearTaskInputs";
-import { activeProject } from "..";
+import { activeProject, saveDataToLocalStorage } from "..";
 import { deleteTask } from "..";
 
 export function renderActiveProject(project) {
@@ -122,6 +122,8 @@ export function renderActiveProject(project) {
       renderActiveProject(activeProject);
 
       document.querySelector(".activeProjectTaskModal").textContent = "";
+
+      saveDataToLocalStorage();
     });
   });
 }
