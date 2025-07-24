@@ -49,6 +49,7 @@ export function renderActiveProject(project) {
     const taskCheckbox = document.createElement("input");
     taskCheckbox.classList.add("taskCheckbox");
     taskCheckbox.type = "checkbox";
+    taskCheckbox.checked = task.taskCompleted;
 
     const taskTitle = document.createElement("span");
     taskTitle.classList.add("taskTitle");
@@ -70,6 +71,13 @@ export function renderActiveProject(project) {
       deleteTaskBtn
     );
     activeProjectTasksContainer.append(activeProjectTask);
+
+    taskCheckbox.addEventListener("click", (e) => {
+      e.stopPropagation();
+      task.taskCompleted = taskCheckbox.checked;
+      saveDataToLocalStorage();
+      renderActiveProject(activeProject);
+    });
 
     activeProjectTask.addEventListener("click", (event) => {
       if (event.target.classList.contains("deleteTaskBtn")) return;

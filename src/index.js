@@ -30,7 +30,8 @@ export const restoredProjects = parsedProjects.map((projectData) => {
       task.title,
       task.description,
       task.dueDate,
-      task.priority
+      task.priority,
+      task.taskCompleted
     );
   });
 
