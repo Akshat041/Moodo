@@ -5,6 +5,7 @@ import { displayProjects } from "./displayProjects";
 import { clearTaskInputs } from "./clearTaskInputs";
 import { activeProject, saveDataToLocalStorage } from "..";
 import { deleteTask } from "..";
+import { add } from "date-fns";
 
 export function renderActiveProject(project) {
   const mainContentContainer = document.querySelector(".mainContentContainer");
@@ -45,6 +46,7 @@ export function renderActiveProject(project) {
 
     const activeProjectTask = document.createElement("div");
     activeProjectTask.classList.add("activeProjectTask");
+    activeProjectTask.style.cursor = "pointer";
 
     const taskCheckbox = document.createElement("input");
     taskCheckbox.classList.add("taskCheckbox");
@@ -137,24 +139,31 @@ export function renderActiveProject(project) {
 }
 
 function populateModal(task) {
+  // const existingModal = document.querySelector(".activeProjectTaskModal");
+  // if (existingModal) existingModal.remove();
+
   const modal = document.querySelector(".activeProjectTaskModal");
+  modal.textContent = "";
+
+  createTaskModal();
 
   modal.querySelector(".taskTitleInputField").value = task.title;
   modal.querySelector(".taskDescriptionInputField").value = task.description;
   modal.querySelector(".dueDatePicker").value = task.dueDate;
   modal.querySelector("#priorityDropdown").value = task.priority;
 
-  // hides add button and show update button instead
-  modal.querySelector(".addTaskBtn").style.display = "none";
+  // remove any previous 'Add Task' button, if needed
+  const addBtn = modal.querySelector(".addTaskBtn");
+  if (addBtn) addBtn.remove();
 
-  let updateTaskBtn = document.querySelector(".updateTaskBtn");
+  // remove any previous 'update' button
+  const oldUpdateBtn = modal.querySelector(".updateTaskBtn");
+  if (oldUpdateBtn) oldUpdateBtn.remove();
 
-  if (!updateTaskBtn) {
-    updateTaskBtn = document.createElement("button");
-    updateTaskBtn.classList.add("updateTaskBtn");
-    updateTaskBtn.textContent = "Update";
-    modal.append(updateTaskBtn);
-  }
+  const updateTaskBtn = document.createElement("button");
+  updateTaskBtn.classList.add("updateTaskBtn");
+  updateTaskBtn.textContent = "Update";
+  modal.append(updateTaskBtn);
 
   updateTaskBtn.addEventListener("click", () => {
     const { getTaskTitle, getTaskDescription, getDueDate, getPriority } =
@@ -165,6 +174,7 @@ function populateModal(task) {
     task.dueDate = getDueDate;
     task.priority = getPriority;
 
+    saveDataToLocalStorage();
     displayProjects();
     renderActiveProject(activeProject);
     modal.textContent = "";
