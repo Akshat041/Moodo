@@ -124,7 +124,7 @@ export function renderActiveProject(project) {
         getPriority
       );
 
-      activeProject.addTask(task);
+      activeProject.tasks.push(task);
       console.log(activeProject.title);
 
       displayProjects();
@@ -139,9 +139,6 @@ export function renderActiveProject(project) {
 }
 
 function populateModal(task) {
-  // const existingModal = document.querySelector(".activeProjectTaskModal");
-  // if (existingModal) existingModal.remove();
-
   const modal = document.querySelector(".activeProjectTaskModal");
   modal.textContent = "";
 
