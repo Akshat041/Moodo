@@ -1,4 +1,9 @@
+import { activeProject } from "..";
+import { renderActiveProject } from "./renderActiveProject";
+
 export function createTaskModal() {
+  const taskModal = document.querySelector(".activeProjectTaskModal");
+
   // task title
   const taskTitleInputField = document.createElement("input");
   taskTitleInputField.classList.add("taskTitleInputField");
@@ -38,7 +43,14 @@ export function createTaskModal() {
   addTaskBtn.classList.add("addTaskBtn");
   addTaskBtn.textContent = "Add Task";
 
-  const taskModal = document.querySelector(".activeProjectTaskModal");
+  const taskModalCancelBtn = document.createElement("button");
+  taskModalCancelBtn.classList.add("taskModalCancelBtn");
+  taskModalCancelBtn.textContent = "Cancel";
+
+  taskModalCancelBtn.addEventListener("click", () => {
+    document.querySelector(".activeProjectTaskModal").textContent = "";
+    renderActiveProject(activeProject);
+  });
 
   priorityDropdown.append(priorityHigh, priorityMedium, priorityLow);
 
@@ -47,6 +59,7 @@ export function createTaskModal() {
     taskDescriptionInputField,
     dueDatePicker,
     priorityDropdown,
+    taskModalCancelBtn,
     addTaskBtn
   );
 }

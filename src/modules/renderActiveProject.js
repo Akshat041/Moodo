@@ -84,6 +84,8 @@ export function renderActiveProject(project) {
     activeProjectTask.addEventListener("click", (event) => {
       if (event.target.classList.contains("deleteTaskBtn")) return;
 
+      document.querySelector(".createTaskBtn").style.display = "none";
+
       createTaskModal();
       populateModal(task);
     });

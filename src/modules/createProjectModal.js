@@ -9,13 +9,22 @@ export function createProjectModal() {
   projectDescriptionInputField.classList.add("projectDescriptionInputField");
   projectDescriptionInputField.placeholder = "Project Description";
 
+  const projectModalCancelBtn = document.createElement("button");
+  projectModalCancelBtn.classList.add("projectModalCancelBtn");
+  projectModalCancelBtn.textContent = "Cancel";
+
   const addProjectBtn = document.createElement("button");
   addProjectBtn.classList.add("addProjectBtn");
   addProjectBtn.textContent = "Add Project";
 
+  projectModalCancelBtn.addEventListener("click", () => {
+    document.querySelector(".myProjectModal").textContent = "";
+  });
+
   myProjectModal.append(
     projectTitleInputField,
     projectDescriptionInputField,
+    projectModalCancelBtn,
     addProjectBtn
   );
 }
