@@ -1,4 +1,6 @@
 export function createProjectModal() {
+  const myProjectModal = document.querySelector(".myProjectModal");
+
   const projectTitleInputField = document.createElement("input");
   projectTitleInputField.classList.add("projectTitleInputField");
   projectTitleInputField.placeholder = "Project title";
@@ -10,8 +12,6 @@ export function createProjectModal() {
   const addProjectBtn = document.createElement("button");
   addProjectBtn.classList.add("addProjectBtn");
   addProjectBtn.textContent = "Add Project";
-
-  const myProjectModal = document.querySelector(".myProjectModal");
 
   myProjectModal.append(
     projectTitleInputField,

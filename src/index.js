@@ -68,6 +68,10 @@ function handleCreateNewProjBtnEvent() {
   const createNewProjectBtn = document.querySelector(".createNewProjectBtn");
 
   createNewProjectBtn.addEventListener("click", () => {
+    // remove existing modal to prevent multiple modals
+    const existingModal = document.querySelector(".myProjectModal");
+    if (existingModal) existingModal.innerHTML = "";
+
     createProjectModal();
 
     const addProjectBtn = document.querySelector(".addProjectBtn");
@@ -88,7 +92,6 @@ function handleCreateNewProjBtnEvent() {
       document.querySelector(".myProjectModal").textContent = "";
 
       saveDataToLocalStorage();
-      console.log(JSON.parse(localStorage.getItem("myProjects")));
     });
   });
 }
