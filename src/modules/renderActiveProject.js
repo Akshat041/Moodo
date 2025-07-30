@@ -150,7 +150,6 @@ export function renderActiveProject(project) {
       );
 
       activeProject.tasks.push(task);
-      console.log(activeProject.title);
 
       displayProjects();
       clearTaskInputs();

@@ -11,8 +11,6 @@ export function displayProjects() {
   myProjectsContainer.textContent = "";
 
   restoredProjects.forEach((myProject, i) => {
-    console.log(myProject);
-
     const myProjectContainer = document.createElement("div");
     myProjectContainer.classList.add("myProjectContainer");
     const myProjectBtn = document.createElement("button");

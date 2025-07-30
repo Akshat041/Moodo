@@ -17,7 +17,6 @@ function getDataFromLocalStorage() {
 }
 
 export const parsedProjects = getDataFromLocalStorage() || [];
-console.log("loaded from local storage: ", parsedProjects);
 
 export let activeProject;
 
