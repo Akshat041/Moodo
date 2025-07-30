@@ -8,15 +8,14 @@ This project allows users to:
 
 - Create, view, and manage multiple tasks
 - Edit or delete existing tasks
-- Organize tasks by project category
+- View task count on every project
 - View task details through a modal popup
 
 It demonstrates core concepts of modern JavaScript development and modular design using Webpack.
 
 ## 🚀 Live Demo
 
-👉 [View Live Project](https://your-username.github.io/todo-list/)  
-_(Replace with your actual GitHub Pages link)_
+👉 [View Live Project](https://akshat041.github.io/Moodo/)
 
 ## 🖼️ Screenshots
 
