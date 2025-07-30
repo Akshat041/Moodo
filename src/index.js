@@ -1,3 +1,4 @@
+import "../src/styles/main.css";
 import { createProjectModal } from "./modules/createProjectModal";
 import { addProject } from "./modules/addProject";
 import { getProjectInputs } from "./modules/getProjectInputs";

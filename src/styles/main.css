@@ -1,0 +1,285 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.myProjectsHeading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.createNewProjectBtn {
+  padding: 0.6rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+.createNewProjectBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Modal for Creating Project */
+.myProjectModal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.myProjectModal input {
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.projectModalCancelBtn,
+.addProjectBtn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.projectModalCancelBtn {
+  background-color: #f0f0f0;
+}
+
+.addProjectBtn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.addProjectBtn:hover {
+  background-color: #218838;
+}
+
+/* My Projects List */
+.myProjectsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.myProjectContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  padding: 0.6rem;
+  border-radius: 6px;
+}
+
+.myProjectBtn {
+  padding: 4px 8px;
+  border-radius: 9px;
+
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.myProjectBtn:hover {
+  background: #d8d8d8;
+}
+
+.myProjectTaskCount {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.myProjectDeleteBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Main Content */
+.mainContentContainer {
+  flex: 1;
+  padding: 4rem 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.ActiveProjectTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.activeProjectDescription {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Task List */
+.activeProjectTasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activeProjectTask {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.priority-high {
+  background-color: #ffe5e5;
+  border-left: 4px solid #dc3545;
+}
+
+.priority-medium {
+  background-color: #fff4e5;
+  border-left: 4px solid #fd7e14;
+}
+
+.priority-low {
+  background-color: #e5f1ff;
+  border-left: 4px solid #0d6efd;
+}
+
+.taskCheckbox {
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.taskTitle {
+  flex: 1;
+  font-weight: 500;
+}
+
+.taskDueDate {
+  color: #888;
+  font-size: 0.9rem;
+  margin-right: 1rem;
+}
+
+.deleteTaskBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Task Modal */
+.activeProjectTaskModal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.activeProjectTaskModal input,
+.activeProjectTaskModal select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.taskModalCancelBtn,
+.addTaskBtn,
+.updateTaskBtn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.taskModalCancelBtn {
+  background-color: #f1f1f1;
+}
+
+.addTaskBtn,
+.updateTaskBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.addTaskBtn:hover,
+.updateTaskBtn:hover {
+  background-color: #218838;
+}
+
+/* Create Task Floating Button */
+.createTaskBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #007bff;
+  border: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.createTaskBtn::after {
+  content: "+";
+  color: white;
+  font-size: 2rem;
+  display: block;
+  text-align: center;
+  line-height: 48px;
+}
+
+/* Utility */
+.hidden {
+  display: none;
+}
+
+.taskCheckbox:checked + .taskTitle {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.taskTitle {
+  transition: all 0.2s ease;
+}

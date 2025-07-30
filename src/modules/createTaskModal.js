@@ -7,7 +7,7 @@ export function createTaskModal() {
   // task title
   const taskTitleInputField = document.createElement("input");
   taskTitleInputField.classList.add("taskTitleInputField");
-  taskTitleInputField.placeholder = "Task title";
+  taskTitleInputField.placeholder = "Task Title";
   taskTitleInputField.required = true;
 
   // task description

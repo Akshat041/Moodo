@@ -22,14 +22,13 @@ export function renderActiveProject(project) {
   activeProjectTasksContainer.classList.add("activeProjectTasksContainer");
 
   const activeProjectTaskModal = document.createElement("div");
-  activeProjectTaskModal.classList.add("activeProjectTaskModal");
+  activeProjectTaskModal.classList.add("activeProjectTaskModal", "hidden");
 
   const createTaskBtn = document.createElement("button");
   createTaskBtn.classList.add("createTaskBtn");
 
   activeProjectTitle.textContent = `${project.title}`;
   activeProjectDescription.textContent = `${project.description}`;
-  createTaskBtn.textContent = "Add New Task";
 
   mainContentContainer.append(
     activeProjectTitle,
@@ -66,6 +65,14 @@ export function renderActiveProject(project) {
     taskDueDate.textContent = `${task.dueDate}`;
     deleteTaskBtn.textContent = "Delete";
 
+    if (task.priority === "High") {
+      activeProjectTask.classList.add("priority-high");
+    } else if (task.priority === "Medium") {
+      activeProjectTask.classList.add("priority-medium");
+    } else if (task.priority === "Low") {
+      activeProjectTask.classList.add("priority-low");
+    }
+
     activeProjectTask.append(
       taskCheckbox,
       taskTitle,
@@ -82,7 +89,11 @@ export function renderActiveProject(project) {
     });
 
     activeProjectTask.addEventListener("click", (event) => {
-      if (event.target.classList.contains("deleteTaskBtn")) return;
+      if (
+        event.target.classList.contains("deleteTaskBtn") ||
+        event.target.classList.contains("taskCheckbox")
+      )
+        return;
 
       document.querySelector(".createTaskBtn").style.display = "none";
 
@@ -98,7 +109,19 @@ export function renderActiveProject(project) {
   });
 
   createTaskBtn.addEventListener("click", () => {
+    document
+      .querySelector(".activeProjectTaskModal")
+      .classList.remove("hidden");
+    document.body.classList.add("modal-active");
+
     createTaskModal();
+
+    setTimeout(() => {
+      activeProjectTaskModal.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 0);
 
     document.querySelector(".createTaskBtn").style.display = "none";
 
@@ -143,6 +166,8 @@ export function renderActiveProject(project) {
 function populateModal(task) {
   const modal = document.querySelector(".activeProjectTaskModal");
   modal.textContent = "";
+
+  modal.classList.remove("hidden");
 
   createTaskModal();
 
