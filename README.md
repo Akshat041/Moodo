@@ -1,4 +1,4 @@
-# Moodo - Feel Plan Do 📝
+# Moodo
 
 A sleek and functional ToDo List web application built as part of [The Odin Project](https://www.theodinproject.com/) JavaScript curriculum.
 
@@ -22,15 +22,15 @@ _(Replace with your actual GitHub Pages link)_
 
 ### 🧩 Task List View
 
-![Task List](../screenshots/task-list.png)
+![Task List](./screenshots/task-list.png)
 
 ### ➕ Add New Task Modal
 
-![Add Task Modal](../screenshots/task-modal.png)
+![Add Task Modal](./screenshots/task-modal.png)
 
 ### 🗂️ Projects Sidebar
 
-![Projects Sidebar](../screenshots/project-modal.png)
+![Projects Sidebar](./screenshots/project-modal.png)
 
 ## 🛠️ Skills Demonstrated
 
